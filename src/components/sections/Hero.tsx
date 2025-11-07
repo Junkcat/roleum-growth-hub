@@ -1,13 +1,19 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
+import { ContactModal } from "./ContactModal";
 
 export const Hero = () => {
-  const scrollToContact = () => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [requestType, setRequestType] = useState("");
+
+  const openModal = (type: string) => {
+    setRequestType(type);
+    setIsModalOpen(true);
   };
 
   return (
-    <section className="relative gradient-hero min-h-[90vh] flex items-center overflow-hidden">
+    <section className="relative gradient-hero min-h-screen flex items-center overflow-hidden pt-20">
       {/* Animated background glow */}
       <div className="absolute inset-0 bg-gradient-to-br from-p-800/20 via-transparent to-a-400/10 animate-glow-pulse" />
       
@@ -29,7 +35,7 @@ export const Hero = () => {
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-a-400 animate-glow-pulse" />
-              <span>1 500+ обученных специалистов</span>
+              <span>3 000+ обученных специалистов</span>
             </div>
           </div>
 
@@ -43,8 +49,8 @@ export const Hero = () => {
 
           {/* Подзаголовок */}
           <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed">
-            Постройте систему развития цифровых ролей за 12 недель. Карточные микромодули, 
-            индивидуальные траектории, peer-to-peer и аналитика прогресса для Product, Data, 
+            Постройте систему развития цифровых ролей на базе AI-платформы за 12 недель. Карточные микромодули, 
+            индивидуальные траектории, peer-to-peer и аналитика прогресса для Product, AI, Data, 
             Engineering, Architecture.
           </p>
 
@@ -53,7 +59,7 @@ export const Hero = () => {
             <Button 
               size="lg" 
               variant="hero" 
-              onClick={scrollToContact}
+              onClick={() => openModal("Получить демо")}
               className="group"
             >
               Получить демо
@@ -62,13 +68,19 @@ export const Hero = () => {
             <Button 
               size="lg" 
               variant="outline" 
-              onClick={scrollToContact}
+              onClick={() => openModal("Запросить консультацию")}
               className="bg-white/10 border-white/30 text-white hover:bg-white/20 backdrop-blur-sm"
             >
               <Play className="w-5 h-5 mr-2" />
               Запросить консультацию
             </Button>
           </div>
+
+          <ContactModal 
+            open={isModalOpen}
+            onOpenChange={setIsModalOpen}
+            requestType={requestType}
+          />
 
           {/* Ключевые преимущества */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 max-w-4xl mx-auto">
@@ -81,8 +93,8 @@ export const Hero = () => {
               <p className="text-white/80">Курсов в библиотеке</p>
             </div>
             <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20 hover-lift">
-              <div className="text-3xl font-bold text-a-400 mb-2">10+</div>
-              <p className="text-white/80">Языков контента</p>
+              <div className="text-3xl font-bold text-a-400 mb-2">AI-driven</div>
+              <p className="text-white/80">Персонализация обучения</p>
             </div>
           </div>
         </div>

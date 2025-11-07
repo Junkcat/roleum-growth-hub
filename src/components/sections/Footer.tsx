@@ -1,3 +1,5 @@
+import logoSmall from "@/assets/roleum-logo-small.png";
+
 export const Footer = () => {
   return (
     <footer className="bg-p-900 text-white py-12">
@@ -6,9 +8,13 @@ export const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             {/* Brand */}
             <div>
-              <h3 className="text-2xl font-bold mb-4 text-a-400">Roleum</h3>
+              <img 
+                src={logoSmall} 
+                alt="Roleum" 
+                className="h-16 w-auto mb-4"
+              />
               <p className="text-n-300 leading-relaxed">
-                LXP-платформа и методология Центра экспертизы для развития 
+                AI-платформа и методология Центра экспертизы для развития 
                 цифровых компетенций
               </p>
             </div>
@@ -50,12 +56,19 @@ export const Footer = () => {
               <h4 className="font-semibold mb-4 text-lg">Контакты</h4>
               <ul className="space-y-2 text-n-300">
                 <li>
-                  <a href="mailto:hello@roleum.pro" className="hover:text-a-400 transition-colors">
-                    hello@roleum.pro
+                  <a href="mailto:akolesnikov@roleum.pro" className="hover:text-a-400 transition-colors">
+                    akolesnikov@roleum.pro
                   </a>
                 </li>
-                <li className="mt-4 pt-4 border-t border-n-700">
-                  <p className="text-sm">Telegram/WhatsApp по запросу</p>
+                <li>
+                  <a 
+                    href="https://t.me/askolesnikov" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:text-a-400 transition-colors"
+                  >
+                    Telegram: @askolesnikov
+                  </a>
                 </li>
               </ul>
             </div>

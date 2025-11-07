@@ -1,4 +1,4 @@
-import { Target, Lightbulb, Users, ClipboardCheck, MessageCircle } from "lucide-react";
+import { Target, Lightbulb, Users, ClipboardCheck, MessageCircle, Brain } from "lucide-react";
 
 const principles = [
   {
@@ -26,6 +26,11 @@ const principles = [
     title: "Community of Practice",
     description: "Сообщество практиков и внутренних экспертов",
   },
+  {
+    icon: Brain,
+    title: "AI-сопровождение",
+    description: "Обратная связь и построение индивидуальных траекторий развития",
+  },
 ];
 
 export const Methodology = () => {
@@ -40,7 +45,7 @@ export const Methodology = () => {
             </h2>
             <p className="text-xl text-n-700 max-w-4xl mx-auto leading-relaxed">
               Корпоративный фреймворк для масштабирования внутренних компетенций. 
-              Единая ролевая модель, практико-ориентированное обучение (PBL), 
+              Единая ролевая модель, практико-ориентированное обучение (Project-based learning), 
               peer-to-peer и тьюторинг, UGC-подход к накоплению артефактов и знаний.
             </p>
           </div>
@@ -84,7 +89,7 @@ export const Methodology = () => {
               />
               <TimelineItem 
                 weeks="Недели 3–4"
-                title="Курикулумы и карточки"
+                title="Курсы и карточки"
                 description="Сборка траекторий, согласование артефактов/практик"
                 color="from-p-700 to-a-600"
               />

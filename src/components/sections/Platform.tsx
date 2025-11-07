@@ -5,7 +5,9 @@ import {
   BarChart, 
   Layers, 
   Smartphone,
-  Database 
+  Database,
+  Shield,
+  Sparkles
 } from "lucide-react";
 
 const features = [
@@ -17,7 +19,7 @@ const features = [
   {
     icon: Route,
     title: "Индивидуальные траектории",
-    description: "Настраиваемая траектория под бизнес-роль и сотрудника (3-месячные цели, подбор из библиотеки, гибкая персонализация).",
+    description: "AI-персонализация траектории под бизнес-роль и сотрудника (3-месячные цели, подбор из библиотеки, гибкая персонализация).",
   },
   {
     icon: Users,
@@ -32,17 +34,27 @@ const features = [
   {
     icon: BarChart,
     title: "Аналитика и контроль",
-    description: "Дашборды по человеку/группе/роли, выгрузка данных, «звёздные карты» компетенций.",
+    description: "AI-аналитика и дашборды по человеку/группе/роли, выгрузка данных, «звёздные карты» компетенций.",
   },
   {
     icon: Smartphone,
     title: "Blended-learning",
-    description: "Онлайн + офлайн, печать карточек, подбор форматов под цех/роль.",
+    description: "Онлайн + офлайн, печать карточек, подбор форматов под цели.",
   },
   {
     icon: Database,
     title: "Интеграции и мобильность",
     description: "Интеграции с корпоративными сервисами (MS-экосистема и др.), мобильная версия, доработки под заказчика.",
+  },
+  {
+    icon: Shield,
+    title: "Безопасность",
+    description: "Защита данных, управление доступом, соответствие корпоративным требованиям безопасности.",
+  },
+  {
+    icon: Sparkles,
+    title: "AI-генерация контента",
+    description: "Автоматическое создание учебных материалов, адаптация контента под роль, AI-помощник для обучения.",
   },
 ];
 
@@ -62,7 +74,7 @@ export const Platform = () => {
           </div>
 
           {/* Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
