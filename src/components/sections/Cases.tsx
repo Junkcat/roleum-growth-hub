@@ -1,4 +1,5 @@
 import { Building2, Users, Layers } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const cases = [
   {
@@ -34,12 +35,19 @@ const cases = [
 ];
 
 export const Cases = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
+
   return (
     <section id="cases" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16 animate-fade-in">
+          <div 
+            ref={headerRef}
+            className={`text-center mb-16 transition-all duration-700 ${
+              headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
+          >
             <h2 className="text-4xl md:text-5xl font-bold text-p-800 mb-6">
               Кейсы клиентов
             </h2>

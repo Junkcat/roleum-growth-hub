@@ -1,4 +1,5 @@
 import { CheckCircle2, Zap, TrendingUp, BarChart3 } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const values = [
   {
@@ -29,12 +30,20 @@ const targetAudience = [
 ];
 
 export const ValueProposition = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
+  const { ref: audienceRef, isVisible: audienceVisible } = useScrollAnimation();
+
   return (
     <section id="features" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16 animate-fade-in">
+          <div 
+            ref={headerRef}
+            className={`text-center mb-16 transition-all duration-700 ${
+              headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
+          >
             <h2 className="text-4xl md:text-5xl font-bold text-p-800 mb-6">
               Что такое Roleum?
             </h2>
@@ -66,7 +75,12 @@ export const ValueProposition = () => {
           </div>
 
           {/* Target Audience */}
-          <div className="bg-gradient-to-br from-p-50 to-a-50 rounded-2xl p-10 border border-p-200">
+          <div 
+            ref={audienceRef}
+            className={`bg-gradient-to-br from-p-50 to-a-50 rounded-2xl p-10 border border-p-200 transition-all duration-700 ${
+              audienceVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
+          >
             <h3 className="text-2xl font-bold text-p-800 mb-6 flex items-center gap-3">
               <TrendingUp className="w-8 h-8 text-a-500" />
               Кому подходит

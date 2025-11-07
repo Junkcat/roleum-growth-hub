@@ -9,6 +9,7 @@ import {
   Shield,
   Sparkles
 } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const features = [
   {
@@ -59,12 +60,20 @@ const features = [
 ];
 
 export const Platform = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
+  const { ref: libraryRef, isVisible: libraryVisible } = useScrollAnimation();
+
   return (
     <section id="platform" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16 animate-fade-in">
+          <div 
+            ref={headerRef}
+            className={`text-center mb-16 transition-all duration-700 ${
+              headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
+          >
             <h2 className="text-4xl md:text-5xl font-bold text-p-800 mb-6">
               Платформа (LXP)
             </h2>
@@ -94,7 +103,12 @@ export const Platform = () => {
           </div>
 
           {/* Content Library */}
-          <div className="bg-gradient-to-br from-p-800 to-p-600 rounded-2xl p-10 text-white text-center shadow-2xl">
+          <div 
+            ref={libraryRef}
+            className={`bg-gradient-to-br from-p-800 to-p-600 rounded-2xl p-10 text-white text-center shadow-2xl transition-all duration-700 ${
+              libraryVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+            }`}
+          >
             <div className="max-w-3xl mx-auto">
               <h3 className="text-3xl font-bold mb-4">Контентная база</h3>
               <p className="text-xl text-white/90 mb-8">

@@ -1,4 +1,5 @@
 import { Code, Database, Layers, TrendingUp } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const roleCategories = [
   {
@@ -35,12 +36,20 @@ const scenarios = [
 ];
 
 export const Roles = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
+  const { ref: scenariosRef, isVisible: scenariosVisible } = useScrollAnimation();
+
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16 animate-fade-in">
+          <div 
+            ref={headerRef}
+            className={`text-center mb-16 transition-all duration-700 ${
+              headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
+          >
             <h2 className="text-4xl md:text-5xl font-bold text-p-800 mb-6">
               Для кого и под какие роли
             </h2>
@@ -77,7 +86,12 @@ export const Roles = () => {
           </div>
 
           {/* Scenarios */}
-          <div className="bg-gradient-to-br from-p-600 to-a-500 rounded-2xl p-10 text-white">
+          <div 
+            ref={scenariosRef}
+            className={`bg-gradient-to-br from-p-600 to-a-500 rounded-2xl p-10 text-white transition-all duration-700 ${
+              scenariosVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
+          >
             <h3 className="text-3xl font-bold mb-8 text-center">Сценарии использования</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {scenarios.map((scenario, index) => (

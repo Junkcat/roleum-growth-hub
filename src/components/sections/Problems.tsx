@@ -1,4 +1,5 @@
 import { AlertCircle, ArrowRight } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const problems = [
   "Дефицит цифровых специалистов и высокая стоимость найма/аутсорса",
@@ -19,11 +20,18 @@ const solutions = [
 ];
 
 export const Problems = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
+
   return (
     <section className="py-20 bg-n-50">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
+          <div 
+            ref={headerRef}
+            className={`text-center mb-16 transition-all duration-700 ${
+              headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
+          >
             <h2 className="text-4xl md:text-5xl font-bold text-p-800 mb-6">
               Проблемы, которые мы решаем
             </h2>

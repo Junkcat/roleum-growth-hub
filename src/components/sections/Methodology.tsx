@@ -1,4 +1,5 @@
 import { Target, Lightbulb, Users, ClipboardCheck, MessageCircle, Brain } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const principles = [
   {
@@ -34,12 +35,20 @@ const principles = [
 ];
 
 export const Methodology = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
+  const { ref: timelineRef, isVisible: timelineVisible } = useScrollAnimation();
+
   return (
     <section id="coe" className="py-20 bg-gradient-to-br from-n-50 to-p-50">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16 animate-fade-in">
+          <div 
+            ref={headerRef}
+            className={`text-center mb-16 transition-all duration-700 ${
+              headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
+          >
             <h2 className="text-4xl md:text-5xl font-bold text-p-800 mb-6">
               Методология Центра экспертизы (CoE)
             </h2>
@@ -75,7 +84,12 @@ export const Methodology = () => {
           </div>
 
           {/* Timeline - 12 weeks */}
-          <div className="bg-white rounded-2xl p-8 md:p-10 shadow-xl border border-p-200">
+          <div 
+            ref={timelineRef}
+            className={`bg-white rounded-2xl p-8 md:p-10 shadow-xl border border-p-200 transition-all duration-700 ${
+              timelineVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
+          >
             <h3 className="text-3xl font-bold text-p-800 mb-8 text-center">
               Как это работает: от старта до пилота за 12 недель
             </h3>
