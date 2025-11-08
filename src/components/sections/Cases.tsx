@@ -4,7 +4,7 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 const cases = [
   {
     icon: Users,
-    title: "Школа \"Владельцев продуктов\"",
+    title: "Центр экспертизы IT",
     client: "Крупный производственный холдинг (ТОП 1 в сегменте)",
     results: [
       "Обучили 600+ сотрудников на роли \"Владелец продукта\", Change-менеджер, Scrum-мастер и другие",
